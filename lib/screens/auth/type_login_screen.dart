@@ -3,8 +3,8 @@ import 'package:rockelcoks_market/screens/auth/login_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
-class SelectMethodLogin extends StatelessWidget {
-  const SelectMethodLogin({super.key});
+class TypeLoginScreen extends StatelessWidget {
+  const TypeLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

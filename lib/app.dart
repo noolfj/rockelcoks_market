@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/auth/confirmation_code_screen.dart';
 import 'package:rockelcoks_market/screens/auth/welcome_screen.dart';
+import 'package:rockelcoks_market/screens/home_screen.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const WelcomeScreen(), 
+      home: HomeScreen(), 
       routes: {
-        '/welcome_screen': (context) => const WelcomeScreen(),
-        '/confirmation_code_screen': (context) => const ConfirmationCodeScreen(),
+        '/main_screen': (context) =>  HomeScreen(),
+        '/welcome_screen': (context) =>  WelcomeScreen(),
+        '/confirmation_code_screen': (context) =>  ConfirmationCodeScreen(),
       },
     );
   }

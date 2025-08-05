@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rockelcoks_market/screens/auth/select_login_screen.dart';
+import 'package:rockelcoks_market/screens/auth/type_login_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
@@ -87,7 +87,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 onPressed: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => SelectMethodLogin()),
+                                    MaterialPageRoute(builder: (context) => TypeLoginScreen()),
                                   );
                                 },
                                 backgroundColor: Color(0xFF9DA174),

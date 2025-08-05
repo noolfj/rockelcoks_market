@@ -1,6 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:rockelcoks_market/screens/home_screen.dart';
+import 'package:rockelcoks_market/screens/main/main_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
@@ -108,7 +109,7 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                         onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ConfirmationCodeScreen()),
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
                         );
                         },
                         backgroundColor: const Color(0xFF035D41),

@@ -39,6 +39,9 @@ class AppStyles {
       case 'agdasima':
         fontGetter = GoogleFonts.agdasima;
         break;
+      case 'roboto':
+        fontGetter = GoogleFonts.roboto;
+        break;
       // case 'manrope':
       default:
         fontGetter = GoogleFonts.manrope;
