@@ -1,106 +1,200 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:rockelcoks_market/screens/main/search_textfield.dart';
+import 'package:rockelcoks_market/utils/app_styles.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final List<String> banners = [
+    'assets/images/banner.png',
+    'assets/images/banner.png',
+    'assets/images/banner.png',
+  ];
+
+  final List<String> popularSearches = [
+    'Кроссовки',
+    'Кондиционер',
+    'Компьютер',
+    'Кошка',
+  ];
+
+  final List<String> recommendedSearches = [
+    'Ноутбук',
+    'Бизнес товары',
+    'Оптовые товары',
+    'Одежда',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Image.asset('assets/icons/ic_logo.png', height: 30),
-            SizedBox(width: 10),
-            Text('RIVERBOARD'),
-          ],
-        ),
-        actions: [IconButton(icon: Icon(Icons.menu), onPressed: () {})],
-      ),
-      body: Container(
-        color: const Color(0xffDFE0DF),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+      body: Stack(
+        children: [
+          Container(
+            color: const Color(0xffDFE0DF),
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/bg_appbar.png',
+                      fit: BoxFit.cover,
+                      height: 350,
+                      width: double.infinity,
+                    ),
+                    Column(
+                      children: [
+                        const SizedBox(height: 24),
+                        AppBar(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          title: Row(
+                            children: [
+                              Image.asset(
+                                'assets/icons/ic_logo_appbar.png',
+                                height: 46,
+                                width: 46,
+                              ),
+                              ShaderMask(
+                                shaderCallback: (bounds) {
+                                  return const LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: [
+                                      Colors.black,
+                                      Colors.white,
+                                    ],
+                                  ).createShader(bounds);
+                                },
+                                blendMode: BlendMode.srcIn,
+                                child: Text(
+                                  'ROCKELCOKS',
+                                  style: AppStyles.getAppTextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    context: context,
+                                    fontFamily: 'ibmPlexSans',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Image.asset(
+                                    'assets/icons/ic_address.png',
+                                    height: 24,
+                                    width: 24,
+                                  ),
+                                ),
+                                Text(
+                                  'Адрес',
+                                  style: AppStyles.getAppTextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    context: context,
+                                    fontFamily: 'nunito',
+                                  ),
+                                ),
+                                const SizedBox(width: 30),
+                              ],
+                            ),
+                          ],
+                        ),
+                         SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.066,
+                         ),
+                        CarouselSlider(
+                          options: CarouselOptions(
+                            height: 170,
+                            enlargeCenterPage: true,
+                            viewportFraction: 0.89,
+                            autoPlay: true,
+                          ),
+                          items: banners
+                              .map(
+                                (img) => ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Image.asset(
+                                    img,
+                                    fit: BoxFit.cover,
+                                    width: 1000,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+                    )
+                  ],
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Поиск товаров и артикулов',
-                    prefixIcon: Icon(Icons.search),
-                    border: InputBorder.none,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _categoryItem('assets/icons/ic_link.png', 'Ссылка'),
+                      _categoryItem('assets/icons/ic_points.png', 'Баллы'),
+                      _categoryItem('assets/icons/ic_shop.png',
+                          'Оптовый\nзакуп'),
+                      _categoryItem('assets/icons/ic_biz.png', 'Бизнес'),
+                    ],
                   ),
                 ),
-              ),
+                const SizedBox(height: 16),
+              ],
             ),
-            Expanded(
-              child: SingleChildScrollView(child: Column(children: [
-            ],
-          )),
-            ),
-          ],
+          ),
+        Positioned(
+          top: MediaQuery.of(context).padding.top + kToolbarHeight + 25,
+          left: 16,
+          right: 16,
+          child: SearchField(
+            popularSearches: popularSearches,
+            recommendedSearches: recommendedSearches,
+            onSelected: (value) {
+              print('Выбрано: $value');
+            },
+          ),
         ),
+      ],
       ),
     );
   }
 
-  Widget _buildCategoryIcon(IconData icon, String label) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.green[100],
-          child: Icon(icon, size: 30, color: Colors.green),
-        ),
-        SizedBox(height: 5),
-        Text(label, textAlign: TextAlign.center),
-      ],
-    );
-  }
-
-  Widget _buildProductCard(
-    String title,
-    String price,
-    String discount,
-    double rating,
-    String imagePath,
-  ) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+  Widget _categoryItem(String icon, String label) {
+    return Container(
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(imagePath, height: 150, fit: BoxFit.cover),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      price,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    if (discount.isNotEmpty)
-                      Text(discount, style: TextStyle(color: Colors.red)),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.yellow, size: 16),
-                    SizedBox(width: 5),
-                    Text(rating.toString()),
-                  ],
-                ),
-              ],
+          Image.asset(icon, height: 24),
+          const SizedBox(height: 3),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],

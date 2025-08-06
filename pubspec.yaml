@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.3.0
   overlay_loader_with_app_icon: ^0.0.4
+  carousel_slider: ^5.1.1
 
 
 dev_dependencies:
@@ -35,6 +36,7 @@ flutter:
     - assets/icons/ic_logo.png
     - assets/images/bg_top.png
     - assets/images/bg_bottom.png
+    - assets/images/bg_appbar.png
 
  
   # example:
