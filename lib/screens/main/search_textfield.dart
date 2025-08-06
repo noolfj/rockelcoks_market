@@ -50,9 +50,9 @@ class _SearchFieldState extends State<SearchField> {
 
 @override
 Widget build(BuildContext context) {
-
-   final screenHeight = MediaQuery.of(context).size.height;
-   final screenWidth = MediaQuery.of(context).size.width;
+  final screenHeight = MediaQuery.of(context).size.height;
+  final screenWidth = MediaQuery.of(context).size.width;
+  final textFieldWidth = screenWidth * 0.81; // Ширина TextField
 
   final filteredPopular = _getFilteredSearches(widget.popularSearches, _searchController.text);
   final filteredRecommended = widget.recommendedSearches;
@@ -60,11 +60,11 @@ Widget build(BuildContext context) {
   return Column(
     children: [
       Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center, 
         children: [
           Container(
             height: screenHeight * 0.05,
-            width: screenWidth * 0.81,
+            width: textFieldWidth, 
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: _searchFocusNode.hasFocus
@@ -85,9 +85,9 @@ Widget build(BuildContext context) {
                   fontFamily: 'nunito',
                 ),
                 prefixIcon: Padding(
-                  padding: EdgeInsets.only(left: screenWidth * 0.03, right: screenWidth * 0.01,),
+                  padding: EdgeInsets.only(left: screenWidth * 0.03, right: screenWidth * 0.01),
                   child: SizedBox(
-                    height: screenHeight * 0.03, 
+                    height: screenHeight * 0.03,
                     width: screenWidth * 0.07,
                     child: Image.asset('assets/icons/ic_search.png'),
                   ),
@@ -97,22 +97,22 @@ Widget build(BuildContext context) {
                   minHeight: 20,
                 ),
                 suffixIcon: _searchFocusNode.hasFocus
-                ? Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Image.asset('assets/icons/ic_camera.png', width: 25, height: 25),
-                      ),
-                    SizedBox(width: 8),
-                      InkWell(
-                        onTap: () {},
-                        child: Image.asset('assets/icons/ic_micro.png',width: 25, height: 25),
-                      ),
-                     SizedBox(width: 10), 
-                    ],
-                  )
-                : null,
+                    ? Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Image.asset('assets/icons/ic_camera.png', width: 25, height: 25),
+                          ),
+                          SizedBox(width: 8),
+                          InkWell(
+                            onTap: () {},
+                            child: Image.asset('assets/icons/ic_micro.png', width: 25, height: 25),
+                          ),
+                          SizedBox(width: 10),
+                        ],
+                      )
+                    : null,
               ),
               onChanged: (_) => setState(() {}),
             ),
@@ -120,12 +120,9 @@ Widget build(BuildContext context) {
           const SizedBox(width: 6),
           InkWell(
             borderRadius: BorderRadius.circular(10),
-            onTap: () {
-
-            },
-            child: Image.asset('assets/icons/ic_filter.png', width: 25, height:  25),
-            ),
-          
+            onTap: () {},
+            child: Image.asset('assets/icons/ic_filter.png', width: 25, height: 25),
+          ),
         ],
       ),
       if (_showSearchSuggestions)
@@ -188,29 +185,31 @@ Widget _buildSearchSuggestions(
             ...recommended.map(
               (e) => _buildSearchItem(e, assetIcon: 'assets/icons/ic_trend.png'),
             ),
+           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            
           ],
         ],
       ),
       context,
     );
   }
-
+  
 Widget _suggestionsContainer(Widget child, BuildContext context) {
-  return Align(
-    alignment: Alignment.topLeft,         
+  return Center(
     child: Container(
-      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
+      margin: const EdgeInsets.only(right: 31),
       width: MediaQuery.of(context).size.width * 0.81,
-      height: MediaQuery.of(context).size.height * 0.33,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10)),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(10)),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: child,
     ),
   );
 }
+
+
 
 
 Widget _buildSearchItem(String text, {required String assetIcon}) {

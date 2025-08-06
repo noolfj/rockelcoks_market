@@ -161,8 +161,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
         Positioned(
           top: MediaQuery.of(context).padding.top + kToolbarHeight + 25,
-          left: 16,
-          right: 16,
+          left: 0,
+          right: 0,
           child: SearchField(
             popularSearches: popularSearches,
             recommendedSearches: recommendedSearches,
