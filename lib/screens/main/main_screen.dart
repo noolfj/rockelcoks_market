@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:rockelcoks_market/custom_widgets/products_card.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
@@ -11,6 +12,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  int _current = 0; 
+
   final List<String> banners = [
     'assets/images/banner.png',
     'assets/images/banner1.jpg',
@@ -33,7 +37,43 @@ class _MainScreenState extends State<MainScreen> {
     'Одежда',
   ];
 
-  int _current = 0; 
+  final products = [
+  {
+    'imagePath': 'assets/images/products/headphones.png',
+    'title': 'Беспроводные наушники Baseus Bowie E9',
+    'price': '299',
+    'oldPrice': '549',
+    'badgeText': 'хорошая цена',
+    'saleText': '-46%',
+  },
+  {
+    'imagePath': 'assets/images/products/watch.png',
+    'title': 'Смарт-часы Xiaomi Mi Band 8',
+    'price': '349',
+    'oldPrice': '549',
+    'badgeText': 'Хит продаж',
+  },
+  {
+    'imagePath': 'assets/images/products/shirt.jpg',
+    'title': 'Смарт-часы Xiaomi Mi Band 8',
+    'price': '349',
+    'oldPrice': '549',
+    'badgeText': 'Хит продаж',
+    'saleText': '-21%',
+
+  },
+  {
+    'imagePath': 'assets/images/products/massag.jpg',
+    'title': 'Смарт-часы Xiaomi Mi Band 8',
+    'price': '349',
+    'oldPrice': '549',
+    'badgeText': 'Хит продаж',
+    'saleText': '-18%',
+
+  },
+
+
+];
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +99,7 @@ class _MainScreenState extends State<MainScreen> {
                         const SizedBox(height: 24),
                         AppBar(
                           elevation: 0,
+                          scrolledUnderElevation: 0,
                           backgroundColor: Colors.transparent,
                           title: Row(
                             children: [
@@ -118,8 +159,15 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                           ],
                         ),
+                        SearchField(
+                          popularSearches: popularSearches,
+                          recommendedSearches: recommendedSearches,
+                          onSelected: (value) {
+                            print('Выбрано: $value');
+                          },
+                        ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.066,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Column(
                           children: [
@@ -173,7 +221,7 @@ class _MainScreenState extends State<MainScreen> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -184,47 +232,62 @@ class _MainScreenState extends State<MainScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
+   
+               const SizedBox(height: 16),
+                Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: products.map((product) {
+                    return SizedBox(
+                      width: (MediaQuery.of(context).size.width - 16 * 2 - 12) / 2, 
+                      child: ProductCard(
+                        imagePath: product['imagePath'] as String,
+                        title: product['title'] as String,
+                        price: product['price'] as String,
+                        oldPrice: product['oldPrice'] as String,
+                        badgeText: product['badgeText'] as String, 
+                        saleText:  product['saleText'] 
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+
+               const SizedBox(height: 16),
+
               ],
             ),
           ),
-          Positioned(
-            top: MediaQuery.of(context).padding.top + kToolbarHeight + 25,
-            left: 0,
-            right: 0,
-            child: SearchField(
-              popularSearches: popularSearches,
-              recommendedSearches: recommendedSearches,
-              onSelected: (value) {
-                print('Выбрано: $value');
-              },
-            ),
-          ),
+        
         ],
       ),
+      
     );
   }
 
-  Widget _categoryItem(String icon, String label) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.15,
-      height: MediaQuery.of(context).size.height * 0.07,
-      decoration: BoxDecoration( 
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: const Border(
-          top: BorderSide(
-            color: Color(0xff6E6E6E), 
-            width: 1, 
-          ),
+ Widget _categoryItem(String icon, String label) {
+  return Container(
+    width: MediaQuery.of(context).size.width * 0.15,
+    height: MediaQuery.of(context).size.height * 0.07,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      border: const Border(
+        top: BorderSide(
+          color: Color(0xff6E6E6E),
+          width: 1,
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(icon, height: 28, width: 32),
-          SizedBox(height: 3),
-          FittedBox(
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(icon, height: 28, width: 32),
+        const SizedBox(height: 3),
+        Flexible( 
+          child: FittedBox(
             child: Text(
               label,
               textAlign: TextAlign.center,
@@ -237,9 +300,10 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
 }

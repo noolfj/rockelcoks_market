@@ -32,6 +32,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/products/
     - assets/icons/
     - assets/icons/navbar/
     - assets/icons/ic_logo.png
