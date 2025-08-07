@@ -16,6 +16,7 @@ dependencies:
   google_fonts: ^6.3.0
   overlay_loader_with_app_icon: ^0.0.4
   carousel_slider: ^5.1.1
+  smooth_page_indicator: ^1.2.1
 
 
 dev_dependencies:

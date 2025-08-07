@@ -52,7 +52,7 @@ class _SearchFieldState extends State<SearchField> {
 Widget build(BuildContext context) {
   final screenHeight = MediaQuery.of(context).size.height;
   final screenWidth = MediaQuery.of(context).size.width;
-  final textFieldWidth = screenWidth * 0.81; // Ширина TextField
+  final textFieldWidth = screenWidth * 0.81;
 
   final filteredPopular = _getFilteredSearches(widget.popularSearches, _searchController.text);
   final filteredRecommended = widget.recommendedSearches;

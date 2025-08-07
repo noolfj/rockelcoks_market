@@ -33,6 +33,9 @@ class AppStyles {
       case 'ibmPlexSans':
         fontGetter = GoogleFonts.ibmPlexSans;
         break;
+      case 'ibmPlexMono':
+        fontGetter = GoogleFonts.ibmPlexMono;
+        break;
       case 'inter':
         fontGetter = GoogleFonts.inter;
         break;
