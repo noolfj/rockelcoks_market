@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rockelcoks_market/custom_widgets/products_card.dart';
+import 'package:rockelcoks_market/model/products_data.dart';
+import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
@@ -37,44 +39,7 @@ class _MainScreenState extends State<MainScreen> {
     'Одежда',
   ];
 
-  final products = [
-  {
-    'imagePath': 'assets/images/products/headphones.png',
-    'title': 'Беспроводные наушники Baseus Bowie E9',
-    'price': '299',
-    'oldPrice': '549',
-    'badgeText': 'хорошая цена',
-    'saleText': '-46%',
-  },
-  {
-    'imagePath': 'assets/images/products/watch.png',
-    'title': 'Смарт-часы Xiaomi Mi Band 8',
-    'price': '349',
-    'oldPrice': '549',
-    'badgeText': 'Хит продаж',
-  },
-  {
-    'imagePath': 'assets/images/products/shirt.jpg',
-    'title': 'Смарт-часы Xiaomi Mi Band 8',
-    'price': '349',
-    'oldPrice': '549',
-    'badgeText': 'Хит продаж',
-    'saleText': '-21%',
-
-  },
-  {
-    'imagePath': 'assets/images/products/massag.jpg',
-    'title': 'Смарт-часы Xiaomi Mi Band 8',
-    'price': '349',
-    'oldPrice': '549',
-    'badgeText': 'Хит продаж',
-    'saleText': '-18%',
-
-  },
-
-
-];
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,9 +131,7 @@ class _MainScreenState extends State<MainScreen> {
                             print('Выбрано: $value');
                           },
                         ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
+                        SizedBox( height: MediaQuery.of(context).size.height * 0.02),
                         Column(
                           children: [
                             CarouselSlider(
@@ -233,8 +196,9 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
    
-               const SizedBox(height: 16),
-                Padding(
+              const SizedBox(height: 16),
+              
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 6),
                 child: Wrap(
                   spacing: 12,
@@ -243,19 +207,35 @@ class _MainScreenState extends State<MainScreen> {
                     return SizedBox(
                       width: (MediaQuery.of(context).size.width - 16 * 2 - 12) / 2, 
                       child: ProductCard(
-                        imagePath: product['imagePath'] as String,
+                        imagePath: (product['imagePaths'] as List<String>)[0],
                         title: product['title'] as String,
                         price: product['price'] as String,
                         oldPrice: product['oldPrice'] as String,
-                        badgeText: product['badgeText'] as String, 
-                        saleText:  product['saleText'] 
+                        badgeText: product['badgeText'] as String,
+                        saleText: product['saleText'] as String?,
+                        rating: product['rating'] as String,
+                        comment: product['comment'] as String,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailScreen(
+                                imagePaths: List<String>.from(product['imagePaths'] as List),
+                                title: product['title'] as String,
+                                price: product['price'] as String,
+                                oldPrice: product['oldPrice'] as String,
+                                rating: product['rating'] as String,
+                                comment: product['comment'] as String, 
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     );
                   }).toList(),
                 ),
               ),
-
-               const SizedBox(height: 16),
+              const SizedBox(height: 8),
 
               ],
             ),

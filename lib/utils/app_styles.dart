@@ -62,6 +62,7 @@ class AppStyles {
       letterSpacing: letterSpacing,
       fontWeight: fontWeight,
       decoration: isStrikethrough ? TextDecoration.lineThrough : TextDecoration.none,
+      decorationColor: Color(0xff8BBCA6),
       height: lineHeight,
     ),
   );

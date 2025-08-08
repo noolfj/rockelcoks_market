@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final String imagePath;
   final String title;
   final String price;
   final String oldPrice;
   final String badgeText;
   final String? saleText;
+  final String? rating;
+  final String? comment;
+  final VoidCallback? onTap;
 
   const ProductCard({
     Key? key,
@@ -16,17 +19,33 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.oldPrice,
     required this.badgeText,
+    required this.rating,
+    required this.comment,
     this.saleText,
+     this.onTap,
   }) : super(key: key);
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Padding(
-      padding: EdgeInsets.only(left: screenWidth * 0.028, right: screenWidth * 0.028, bottom: screenHeight * 0.01),
-      child: Container(
+return Padding(
+  padding: EdgeInsets.only(
+    left: screenWidth * 0.028,
+    right: screenWidth * 0.028,
+    bottom: screenHeight * 0.01,
+  ),
+  child: GestureDetector(
+    onTap: widget.onTap,
+    child: Container(
         height: screenHeight * 0.3,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -56,7 +75,7 @@ class ProductCard extends StatelessWidget {
                         bottomLeft: Radius.circular(0),
                       ),
                       child: Image.asset(
-                        imagePath,
+                        widget.imagePath,
                         height: screenHeight * 0.21,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -75,16 +94,16 @@ class ProductCard extends StatelessWidget {
                       top: screenHeight * 0.17,
                       right: 0,
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
                         decoration: BoxDecoration(
                           color: const Color(0xFF8BBCA6),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(6),
                             bottomLeft: Radius.circular(6),
                           ),
                         ),
                         child: Text(
-                          badgeText,
+                          widget.badgeText,
                           style: AppStyles.getAppTextStyle(
                             context: context,
                             color: Colors.white,
@@ -95,21 +114,21 @@ class ProductCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (saleText != null && saleText!.isNotEmpty)
+                    if (widget.saleText != null && widget.saleText!.isNotEmpty)
                       Positioned(
                         top: screenHeight * 0.145,
                         right: 0,
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
                           decoration: BoxDecoration(
                             color: const Color(0xFFFBD8C1),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(6),
                               bottomLeft: Radius.circular(6),
                             ),
                           ),
                           child: Text(
-                            saleText!,
+                            widget.saleText!,
                             style: AppStyles.getAppTextStyle(
                               context: context,
                               color: const Color(0xff333331),
@@ -124,7 +143,12 @@ class ProductCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.03, right: screenWidth * 0.12, top: 2, bottom: 2),
+                    padding: EdgeInsets.only(
+                      left: screenWidth * 0.03,
+                      right: screenWidth * 0.12,
+                      top: 2,
+                      bottom: 2,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,31 +159,31 @@ class ProductCard extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '$priceс',
+                                  '${widget.price}с',
                                   style: AppStyles.getAppTextStyle(
                                     context: context,
-                                    color: Color(0xff035D41),
-                                    fontSize: 16,
+                                    color: const Color(0xff035D41),
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w700,
                                     fontFamily: 'workSans',
                                   ),
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
-                                  '$oldPriceс',
+                                  '${widget.oldPrice}с',
                                   style: AppStyles.getAppTextStyle(
                                     context: context,
-                                    color: Color(0xff8BBCA6),
-                                    fontSize: 10,
+                                    color: const Color(0xff8BBCA6),
+                                    fontSize: 8,
                                     fontWeight: FontWeight.w700,
                                     fontFamily: 'workSans',
-                                    isStrikethrough: true
+                                    isStrikethrough: true,
                                   ),
                                 ),
                               ],
                             ),
                             Text(
-                              title,
+                              widget.title,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: AppStyles.getAppTextStyle(
@@ -169,7 +193,7 @@ class ProductCard extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'nunito',
                                 letterSpacing: -0.5,
-                                lineHeight: 0.9
+                                lineHeight: 0.9,
                               ),
                             ),
                           ],
@@ -182,7 +206,7 @@ class ProductCard extends StatelessWidget {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: '⭐️ 4.9 ',
+                                      text: '⭐️ ${widget.rating} ',
                                       style: AppStyles.getAppTextStyle(
                                         context: context,
                                         color: const Color(0xff333331),
@@ -192,7 +216,7 @@ class ProductCard extends StatelessWidget {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: '(1200 отзывов)',
+                                      text: '(${widget.comment} отзывов)',
                                       style: AppStyles.getAppTextStyle(
                                         context: context,
                                         color: const Color(0xff676764),
@@ -217,7 +241,8 @@ class ProductCard extends StatelessWidget {
               bottom: 6,
               right: 6,
               child: FloatingActionButton(
-                onPressed: () {  },
+                heroTag: 'cartButton-${widget.title}', 
+                onPressed: () {},
                 mini: true,
                 backgroundColor: const Color(0xFF8BBCA6),
                 elevation: 0,
@@ -230,10 +255,27 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isLiked = !isLiked;
+                  });
+                },
+                child: Icon(
+                  isLiked ? Icons.favorite : Icons.favorite_border,
+                  color: isLiked ? Colors.red : Colors.white,
+                  size: 18,
+                ),
+              ),
+            ),
           ],
         ),
       ),
-    );
+    ),
+);
   }
 }
 

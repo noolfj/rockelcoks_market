@@ -19,6 +19,7 @@ dependencies:
   smooth_page_indicator: ^1.2.1
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,6 +34,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/products/
+    - assets/images/users/
     - assets/icons/
     - assets/icons/navbar/
     - assets/icons/ic_logo.png
