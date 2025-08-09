@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rockelcoks_market/utils/app_styles.dart';
 
 class CustomButtonAuth extends StatelessWidget {
   final String text;
@@ -46,12 +47,13 @@ class CustomButtonAuth extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(
-          color: textColor,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          fontFamily: fontFamily,
-        ),
+        style: AppStyles.getAppTextStyle(
+                color: textColor,
+                fontSize: fontSize,
+                fontWeight:fontWeight,
+                context: context,
+                fontFamily: fontFamily ?? 'nunito',
+              ),
       ),
     );
   }

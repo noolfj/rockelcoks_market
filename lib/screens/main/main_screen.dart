@@ -184,7 +184,7 @@ class _MainScreenState extends State<MainScreen> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -199,13 +199,13 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 16),
               
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Wrap(
-                  spacing: 12,
+                  spacing: 6,
                   runSpacing: 12,
                   children: products.map((product) {
                     return SizedBox(
-                      width: (MediaQuery.of(context).size.width - 16 * 2 - 12) / 2, 
+                      width: (MediaQuery.of(context).size.width - 12 * 2 - 16) / 2, 
                       child: ProductCard(
                         imagePath: (product['imagePaths'] as List<String>)[0],
                         title: product['title'] as String,

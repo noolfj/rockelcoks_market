@@ -92,12 +92,8 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-   double textFieldWidth = MediaQuery.of(context).size.width * 0.81;
-textFieldWidth = textFieldWidth > 500 ? 500 : textFieldWidth; // max 500 px
-
-
-    final filteredPopular = _getFilteredSearches(widget.popularSearches, _searchController.text);
-    final filteredRecommended = widget.recommendedSearches;
+    double textFieldWidth = MediaQuery.of(context).size.width * 0.81;
+    textFieldWidth = textFieldWidth > 500 ? 500 : textFieldWidth;
 
     return CompositedTransformTarget(
       link: _layerLink,

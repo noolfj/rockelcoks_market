@@ -39,8 +39,8 @@ class _ProductCardState extends State<ProductCard> {
 
 return Padding(
   padding: EdgeInsets.only(
-    left: screenWidth * 0.028,
-    right: screenWidth * 0.028,
+    left: screenWidth * 0.018,
+    right: screenWidth * 0.018,
     bottom: screenHeight * 0.01,
   ),
   child: GestureDetector(
