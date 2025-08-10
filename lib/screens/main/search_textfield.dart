@@ -104,7 +104,7 @@ class _SearchFieldState extends State<SearchField> {
             children: [
               Container(
                 key: _textFieldKey,
-                height: screenHeight * 0.05,
+                height: 48,
                 width: textFieldWidth,
                 decoration: BoxDecoration(
                   color: Colors.white,

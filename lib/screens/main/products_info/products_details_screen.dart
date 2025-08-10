@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/model/products_data.dart';
-import 'package:rockelcoks_market/screens/main/products_info/product_bottom_sheet.dart';
+import 'package:rockelcoks_market/screens/main/products_info/product_info_screen.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_card_item.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
@@ -56,7 +56,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     _screens[0] = _buildProductDetailScreen();
-
     return Scaffold(
       backgroundColor: const Color(0xffDFE0DF),
       body: _screens[_selectedIndex], 
@@ -68,7 +67,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   }
 
   Widget _buildProductDetailScreen() {
-        final screenHeight = MediaQuery.of(context).size.height;
+    
+    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return SingleChildScrollView(
@@ -192,11 +192,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withOpacity(0.5),
             shape: BoxShape.circle,
           ),
           child: IconButton(
-            icon: Icon(icon, color: Colors.white),
+            icon: Icon(icon, color: Colors.black),
             onPressed: onPressed,
           ),
         ),
@@ -642,22 +642,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                padding: const EdgeInsets.only(bottom: 4),
                child: GestureDetector(
                   onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) => DraggableScrollableSheet(
-                        initialChildSize: 0.97,
-                        minChildSize: 0.5,
-                        maxChildSize: 0.97,
-                        expand: false,
-                        builder: (context, scrollController) {
-                          return ProductDetailsBottomSheet(
-                            scrollController: scrollController,
-                          );
-                        },
-                      ),
-                    );
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => ProductInfoScreen()));
                   },
                  child: Row(
                    mainAxisSize: MainAxisSize.min,

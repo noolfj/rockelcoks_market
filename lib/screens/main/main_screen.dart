@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
                     Image.asset(
                       'assets/images/bg_appbar.png',
                       fit: BoxFit.cover,
-                      height: 350,
+                      height: MediaQuery.of(context).size.height * 0.35,
                       width: double.infinity,
                     ),
                     Column(
@@ -136,7 +136,7 @@ class _MainScreenState extends State<MainScreen> {
                           children: [
                             CarouselSlider(
                               options: CarouselOptions(
-                                height: 170,
+                                height: MediaQuery.of(context).size.height * 0.19,
                                 enlargeCenterPage: true,
                                 viewportFraction: 0.89,
                                 autoPlay: true,
