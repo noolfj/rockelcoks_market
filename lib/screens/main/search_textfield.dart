@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rockelcoks_market/screens/main/search/camera_screen.dart';
+import 'package:rockelcoks_market/screens/main/search/micro_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
 class SearchField extends StatefulWidget {
@@ -142,12 +144,22 @@ class _SearchFieldState extends State<SearchField> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               InkWell(
-                                onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => CameraScreen()),
+                                );
+                              },
                                 child: Image.asset('assets/icons/ic_camera.png', width: 25, height: 25),
                               ),
                               SizedBox(width: 8),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                   Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => MicroScreen()),
+                                );
+                                },
                                 child: Image.asset('assets/icons/ic_micro.png', width: 25, height: 25),
                               ),
                               SizedBox(width: 10),
