@@ -15,7 +15,7 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 5))..repeat();
+      duration: Duration(seconds: 5), )..repeat();
   }
 
   @override
@@ -50,14 +50,31 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Назад'),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/icons/ic_left.png',
-            width: 10,
-            height: 20,
+        automaticallyImplyLeading: false,
+        title: GestureDetector(
+          behavior: HitTestBehavior.translucent, 
+          onTap: () => Navigator.pop(context),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/icons/ic_left.png',
+                width: 10,
+                height: 20,
+              ),
+              SizedBox(width: 10),
+              Text(
+                'Назад',
+                  style: AppStyles.getAppTextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  context: context,
+                  fontFamily: 'roboto',
+                ),
+              ),
+            ],
           ),
-          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -65,7 +82,7 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-          Text(
+            Text(
               'Нажмите и скажите что вы хотите найти',
               textAlign: TextAlign.center, 
               style: AppStyles.getAppTextStyle(
@@ -83,7 +100,7 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
                 child: AnimatedBuilder(
                   animation: _controller,
                   builder: (context, child) {
-                    return  Stack(
+                    return Stack(
                       alignment: Alignment.center,
                       children: [
                         if (_isListening)
@@ -94,7 +111,7 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
                               painter: RingPainter(ringColors),
                             ),
                           ),
-                       Container(
+                        Container(
                           child: CircleAvatar(
                             radius: 80,
                             backgroundColor: Colors.grey[300],
@@ -107,20 +124,45 @@ class _MicroScreenState extends State<MicroScreen> with SingleTickerProviderStat
                             ),
                           ),
                         ),
-
                       ],
                     );
                   },
                 ),
               ),
             ),
+            SizedBox(height: 30),
 
+            if (_isListening)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _colorBlock(Colors.red),
+                  SizedBox(width: 10),
+                  _colorBlock(Colors.green),
+                  SizedBox(width: 10),
+                  _colorBlock(Colors.yellow),
+                  SizedBox(width: 10),
+                  _colorBlock(Color(0xff0800F6)),
+                ],
+              ),
           ],
         ),
       ),
     );
   }
 }
+
+Widget _colorBlock(Color color) {
+  return Container(
+    width: 15,
+    height: 20,
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(10),
+    ),
+  );
+}
+
 
 class RingPainter extends CustomPainter {
   final List<Color> colors;

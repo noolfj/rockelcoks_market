@@ -63,20 +63,33 @@ class _SearchFieldState extends State<SearchField> {
     _overlayEntry = null;
   }
 
- OverlayEntry _createOverlayEntry() {
+OverlayEntry _createOverlayEntry() {
   final renderBox = _textFieldKey.currentContext?.findRenderObject() as RenderBox?;
   final size = renderBox?.size ?? Size.zero;
   final offset = renderBox?.localToGlobal(Offset.zero) ?? Offset.zero;
 
   return OverlayEntry(
-    builder: (context) => Positioned(
-      left: offset.dx,
-      top: offset.dy + size.height,
-      width: size.width,
-      child: Material(
-        elevation: 0,
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10)),
-        child: _buildSearchSuggestionsContent(),
+    builder: (context) => GestureDetector(
+      onTap: () {
+    
+      },
+      child: Stack(
+        children: [
+          Positioned(
+            width: size.width,
+            child: CompositedTransformFollower(
+              link: _layerLink,
+              showWhenUnlinked: false,
+              offset: Offset(offset.dx, 45),
+              child: Material(
+                elevation: 0,
+                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10)),
+                clipBehavior: Clip.hardEdge, 
+                child: _containerBoxResultSearch(),
+              ),
+            ),
+          ),
+        ],
       ),
     ),
   );
@@ -183,7 +196,7 @@ class _SearchFieldState extends State<SearchField> {
     );
   }
 
-  Widget _buildSearchSuggestionsContent() {
+  Widget _containerBoxResultSearch() {
     final String query = _searchController.text;
     final filteredPopular = _getFilteredSearches(widget.popularSearches, query);
     final filteredRecommended = widget.recommendedSearches;
