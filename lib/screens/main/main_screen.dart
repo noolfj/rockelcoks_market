@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rockelcoks_market/custom_widgets/products_card.dart';
 import 'package:rockelcoks_market/model/products_data.dart';
+import 'package:rockelcoks_market/screens/main/delivery/delivery_screen.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
@@ -99,30 +100,40 @@ class _MainScreenState extends State<MainScreen> {
                             ],
                           ),
                           actions: [
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: Image.asset(
-                                    'assets/icons/ic_address.png',
-                                    height: 24,
-                                    width: 24,
-                                  ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DeliveryScreen()),
+                                );
+                                },
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/icons/ic_address.png',
+                                      height: 24,
+                                      width: 24,
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      'Адрес',
+                                      style: AppStyles.getAppTextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        context: context,
+                                        fontFamily: 'nunito',
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Адрес',
-                                  style: AppStyles.getAppTextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    context: context,
-                                    fontFamily: 'nunito',
-                                  ),
-                                ),
-                                const SizedBox(width: 30),
-                              ],
-                            ),
-                          ],
+                              ),
+                              const SizedBox(width: 30),
+                            ],
+                          ),
+                        ],
                         ),
                         SearchField(
                           popularSearches: popularSearches,

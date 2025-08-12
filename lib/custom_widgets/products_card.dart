@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_Snackbar.dart';
 
 class ProductCard extends StatefulWidget {
   final String imagePath;
@@ -263,14 +264,20 @@ return Padding(
                   setState(() {
                     isLiked = !isLiked;
                   });
+                  showCustomSnackBar(
+                    context,
+                    isLiked ? 'Добавлено в избранное' : 'Удалено из избранного',
+                    isLiked ? Colors.green : Colors.grey,
+                  );
                 },
                 child: Icon(
                   isLiked ? Icons.favorite : Icons.favorite_border,
                   color: isLiked ? Colors.red : Colors.white,
-                  size: 18,
+                  size: 22,
                 ),
               ),
             ),
+
           ],
         ),
       ),

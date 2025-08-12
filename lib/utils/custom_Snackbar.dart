@@ -9,23 +9,33 @@ void showCustomSnackBar(BuildContext context, String message, Color color) {
         content: Material(
           color: Colors.transparent,
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
+              gradient: LinearGradient(
+                colors: [Colors.white, color.withOpacity(0.5)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(16),
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: Colors.black.withOpacity(0.2),
+              //     blurRadius: 12,
+              //     offset: const Offset(0, 6),
+              //     spreadRadius: 2,
+              //   ),
+              // ],
+              border: Border.all(
+                color: color.withOpacity(0.3),
+                width: 1,
+              ),
             ),
             child: Row(
               children: [
-                Container(
-                  width: 4,
-                  height: 50,
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  width: 6,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: color,
                     borderRadius: BorderRadius.circular(30),
@@ -36,11 +46,11 @@ void showCustomSnackBar(BuildContext context, String message, Color color) {
                   child: Text(
                     message,
                     style: AppStyles.getAppTextStyle(
-                      color: color,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      context: context, 
-                      fontFamily: ''
+                      color: Colors.black87,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      context: context,
+                      fontFamily: 'Roboto',
                     ),
                   ),
                 ),
@@ -48,10 +58,21 @@ void showCustomSnackBar(BuildContext context, String message, Color color) {
                   onTap: () {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                   },
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.grey,
-                    size: 25,
+                  child: AnimatedScale(
+                    duration: const Duration(milliseconds: 200),
+                    scale: 1.0,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                      child: const Icon(
+                        Icons.close,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -62,12 +83,12 @@ void showCustomSnackBar(BuildContext context, String message, Color color) {
         elevation: 0,
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 16,
-          bottom: 30,
-          left: 16,
-          right: 16,
+          top: MediaQuery.of(context).padding.top + 20,
+          bottom: 40,
+          left: 20,
+          right: 20,
         ),
-        duration: const Duration(seconds: 3),
+        duration: const Duration(seconds: 4),
       ),
     );
 }

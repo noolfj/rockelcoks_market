@@ -106,10 +106,11 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                       child: CustomButtonAuth(
                         text: 'Продолжить',
                         onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                           Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomeScreen()),
+                            (route) => false,
+                          );
                         },
                         backgroundColor: const Color(0xFF035D41),
                         textColor: Colors.white,

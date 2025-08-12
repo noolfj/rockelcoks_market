@@ -50,6 +50,9 @@ class AppStyles {
     case 'worksans':
       fontGetter = GoogleFonts.workSans;
       break;
+    case 'poppins':
+      fontGetter = GoogleFonts.poppins;
+      break;
     default:
       fontGetter = GoogleFonts.manrope;
   }
