@@ -3,8 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rockelcoks_market/custom_widgets/products_card.dart';
 import 'package:rockelcoks_market/model/products_data.dart';
 import 'package:rockelcoks_market/screens/main/delivery/delivery_screen.dart';
+import 'package:rockelcoks_market/screens/main/points_screen.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
-import 'package:rockelcoks_market/screens/main/search/referral_screen.dart';
+import 'package:rockelcoks_market/screens/main/referral_screen.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
@@ -214,21 +215,24 @@ class _MainScreenState extends State<MainScreen> {
                        'assets/icons/ic_points.png',
                        'Баллы',
                        () {
-                        
+                        Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => PointsScreen()),
+                         );
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_shop.png',
                        'Оптовый\nзакуп',
                        () {
-                        
+
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_biz.png',
                        'Бизнес',
                        () {
-                        
+
                        },
                      ),
 
