@@ -7,6 +7,7 @@ import 'package:rockelcoks_market/screens/main/points_screen.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
 import 'package:rockelcoks_market/screens/main/referral_screen.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
+import 'package:rockelcoks_market/screens/main/wholesale_product/wholesale_product_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
 class MainScreen extends StatefulWidget {
@@ -225,14 +226,20 @@ class _MainScreenState extends State<MainScreen> {
                        'assets/icons/ic_shop.png',
                        'Оптовый\nзакуп',
                        () {
-
+                          Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => WholesaleProductsScreen()),
+                         );
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_biz.png',
                        'Бизнес',
                        () {
-
+                        // Navigator.push(
+                        //    context,
+                        //    MaterialPageRoute(builder: (context) => ReferralScreen()),
+                        //  );
                        },
                      ),
 
