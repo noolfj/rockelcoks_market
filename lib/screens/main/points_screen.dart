@@ -158,47 +158,49 @@ class PointsScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 65),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/icons/ic_cyrcle.png',
-                        height: 24,
-                        width: 24,
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Статистика переходов по',
-                            style: AppStyles.getAppTextStyle(
-                              color: Colors.black,
-                              fontSize: 19,
-                              fontWeight: FontWeight.w600,
-                              context: context,
-                              fontFamily: 'ibmPlexSans',
-                              lineHeight: 1.8,
-                            ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.16),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/icons/ic_cyrcle.png',
+                          height: 24,
+                          width: 24,
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded( 
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Статистика переходов по',
+                                style: AppStyles.getAppTextStyle(
+                                  color: Colors.black,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w600,
+                                  context: context,
+                                  fontFamily: 'ibmPlexSans',
+                                  lineHeight: 1.8,
+                                ),
+                              ),
+                              Text(
+                                'рефиральным ссылкам',
+                                style: AppStyles.getAppTextStyle(
+                                  color: Colors.black,
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w600,
+                                  context: context,
+                                  fontFamily: 'ibmPlexSans',
+                                  lineHeight: 1.8,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            'рефиральным ссылкам',
-                            style: AppStyles.getAppTextStyle(
-                              color: Colors.black,
-                              fontSize: 19,
-                              fontWeight: FontWeight.w600,
-                              context: context,
-                              fontFamily: 'ibmPlexSans',
-                              lineHeight: 1.8,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 
                 const SizedBox(height: 60),
 
@@ -286,7 +288,397 @@ class PointsScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 60),
+                const SizedBox(height: 50),
+                // --------------------------------- Список Users с чатом  ---------------------------------
+                Column(
+                  children: [
+                    TeamMemberItem(
+                      name: 'Ralph Edwards',
+                      role: 'Team Leader',
+                      avatarAsset: 'assets/images/users/avatar1.png',
+                    ),
+                    const SizedBox(height: 16),
+                    TeamMemberItem(
+                      name: 'Jerome Bell',
+                      role: 'Marketing Coordinator',
+                      avatarAsset: 'assets/images/users/avatar2.png',
+                    ),
+                    const SizedBox(height: 16),
+                    TeamMemberItem(
+                      name: 'Robert Fox',
+                      role: 'Software Developer',
+                      avatarAsset: 'assets/images/users/avatar3.png',
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 30),
+
+                 // --------------------------------- Кешбек за покупку ---------------------------------
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Center(
+                    child: Text(
+                      'Кешбек за покупки от \n200сомони',
+                      style: AppStyles.getAppTextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        context: context,
+                        fontFamily: 'ibmplexsans',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, 
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage('assets/images/users/avatar4.png'),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Arthur',
+                          style: AppStyles.getAppTextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            context: context,
+                            fontFamily: 'roboto',
+                            lineHeight: 1.8,
+                            letterSpacing: -0.2,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          '+23.45%',
+                          style: AppStyles.getAppTextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            context: context,
+                            fontFamily: 'roboto',
+                            lineHeight: 1.8,
+                            letterSpacing: -0.2,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 30), 
+
+                    Text(
+                      'Май',
+                      style: AppStyles.getAppTextStyle(
+                        color: Color(0xff373737),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        context: context,
+                        fontFamily: 'roboto',
+                        lineHeight: 2,
+                        letterSpacing: -0.2,
+                      ),
+                    ),
+                     const SizedBox(height: 8), 
+                    Text(
+                      'Баллы: 9834.72',
+                      style: AppStyles.getAppTextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        context: context,
+                        fontFamily: 'roboto',
+                      ),
+                    ),
+                     const SizedBox(height: 8), 
+                    Text(
+                      'вывод на карту можно осуществить после достижения 1000 сомони в кешбеках ',
+                      style: AppStyles.getAppTextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        context: context,
+                        fontFamily: 'roboto',
+                        lineHeight: 1.8,
+                        letterSpacing: 0.2,
+                      ),
+                    ),
+                    const SizedBox(height: 16), 
+                    
+                  ],
+                ),
+              ),
+               Image.asset(
+                  'assets/icons/ic_chart_up.png', 
+                  width: double.infinity,
+                  height: 200, 
+                  fit: BoxFit.contain,
+                ),
+
+
+                 Padding(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.06),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [
+                      Text(
+                        'На что вы можете потратить баллы',
+                        style: AppStyles.getAppTextStyle(
+                          color: Color(0xff035D41),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          context: context,
+                          fontFamily: 'ibmplexsans',
+                          letterSpacing: 1
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+               const SizedBox(height: 30), 
+
+                 Padding(
+                padding: EdgeInsets.only(left: 30), 
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start, 
+                      children: [
+                        Opacity(
+                          opacity: 0.6,
+                          child: Image.asset(
+                            'assets/icons/ic_dollar_blue.png',
+                            height: 23,
+                            width: 23,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            'Обменяйте баллы на подарки',
+                            style: AppStyles.getAppTextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              context: context,
+                              fontFamily: 'roboto',
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 25),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Opacity(
+                          opacity: 0.6,
+                          child: Image.asset(
+                            'assets/icons/ic_dollar_blue.png',
+                            height: 23,
+                            width: 23,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            'Откройте эксклюзивные функции',
+                            style: AppStyles.getAppTextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              context: context,
+                              fontFamily: 'roboto',
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 25),
+
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Opacity(
+                          opacity: 0.6,
+                          child: Image.asset(
+                            'assets/icons/ic_dollar_blue.png',
+                            height: 23,
+                            width: 23,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            'Получите скидку на покупку - \n10 баллов = 1 сомони',
+                            style: AppStyles.getAppTextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              context: context,
+                              fontFamily: 'roboto',
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20), 
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 60),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start, 
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                  
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/ic_chart_line.png',
+                            height: 20,
+                            width: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            'История',
+                            style: AppStyles.getAppTextStyle(
+                              color: Color(0xff035D41),
+                              fontSize: 28,
+                              fontWeight: FontWeight.w700,
+                              context: context,
+                              fontFamily: 'roboto',
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 4), 
+
+                      Text(
+                        'Баллы использованные в майе',
+                        style: AppStyles.getAppTextStyle(
+                          color: Color(0xff383838),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          context: context,
+                          fontFamily: 'roboto',
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                 const SizedBox(height: 20), 
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [
+                       Image.asset(
+                            'assets/images/chart_line.png',
+                            height: 242,
+                            width: 360,
+                          ),
+                    ],
+                  ),
+                ),
+
+              const SizedBox(height: 20), 
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [
+                       Image.asset(
+                            'assets/images/chart_up.png',
+                            height: 295,
+                            width: 360,
+                          ),
+                    ],
+                  ),
+                ),
+
+              const SizedBox(height: 20), 
+
+              Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 20),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: [
+                     Container(
+                       width: 175, 
+                       height: 50,
+                       decoration: BoxDecoration(
+                         color: Color(0xFFF0F0F0),
+                         borderRadius: BorderRadius.circular(8),
+                         border: Border.all(color: Color(0xFFD0D0D0), width: 1),
+                       ),
+                       child: Center(
+                         child: Text(
+                           '6000см',
+                           style: AppStyles.getAppTextStyle(
+                             color: Colors.black,
+                             fontSize: 20,
+                             fontWeight: FontWeight.w600,
+                             context: context,
+                             fontFamily: 'roboto',
+                           ),
+                         ),
+                       ),
+                     ),
+
+                     const SizedBox(width: 12), 
+
+                     ElevatedButton(
+                       onPressed: () {},
+                       style: ElevatedButton.styleFrom(
+                         backgroundColor: Color(0xff355D3A),
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(8),
+                         ),
+                         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                       ),
+                       child: Text(
+                         'вывод',
+                         style: AppStyles.getAppTextStyle(
+                           color: Colors.white,
+                           fontSize: 22,
+                           fontWeight: FontWeight.w600,
+                           context: context,
+                           fontFamily: 'roboto',
+                         ),
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+              const SizedBox(height: 20), 
+
+
               ],
             ),
           ],
@@ -296,6 +688,7 @@ class PointsScreen extends StatelessWidget {
   }
 }
 
+// ---------------------------------Class Диаграмма Cyrcle  ---------------------------------
 class PointsPieChart extends StatelessWidget {
   final double greenPercent;
   final double greyPercent;
@@ -334,6 +727,69 @@ class PointsPieChart extends StatelessWidget {
         ],
         centerSpaceRadius: 0,
         startDegreeOffset: 90,
+      ),
+    );
+  }
+}
+
+// ---------------------------------Class Списко Юзеров с чатом  ---------------------------------
+class TeamMemberItem extends StatelessWidget {
+  final String name;
+  final String role;
+  final String avatarAsset;
+
+  const TeamMemberItem({
+    Key? key,
+    required this.name,
+    required this.role,
+    required this.avatarAsset,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage(avatarAsset),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: AppStyles.getAppTextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    context: context,
+                    fontFamily: 'roboto',
+                  ),
+                ),
+                Text(
+                  role,
+                  style: AppStyles.getAppTextStyle(
+                    color: Color(0xffA0A0A0),
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    context: context,
+                    fontFamily: 'roboto',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Image.asset(
+            'assets/icons/ic_message.png',
+            height: 40,
+            width: 40,
+          ),
+        ],
       ),
     );
   }
