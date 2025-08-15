@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomeScreen(), 
+      home: WelcomeScreen(), 
       routes: {
-        '/main_screen': (context) =>  HomeScreen(),
         '/welcome_screen': (context) =>  WelcomeScreen(),
+        '/main_screen': (context) =>  HomeScreen(),
         '/confirmation_code_screen': (context) =>  ConfirmationCodeScreen(),
       },
     );
