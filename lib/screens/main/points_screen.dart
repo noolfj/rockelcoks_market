@@ -70,7 +70,7 @@ class PointsScreen extends StatelessWidget {
                     children: [
                       Positioned(
                         top: 50,
-                        left: 16,
+                        left: 20,
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back,
                               color: Colors.black, size: 30),

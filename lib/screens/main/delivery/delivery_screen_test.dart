@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/home_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class DeliveryTestScreen extends StatelessWidget {
   @override
@@ -23,11 +24,7 @@ class DeliveryTestScreen extends StatelessWidget {
               color: Colors.black,
             ),
             onPressed: () {
-             Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-              (route) => false,
-            );
+            customNavigatePushAndRemoveWithFade(context, HomeScreen());
            },
           ),
         ),

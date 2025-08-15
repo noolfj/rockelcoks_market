@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 
-class SearchBarWithFilters extends StatefulWidget {
+class SearchWholesaleWidget extends StatefulWidget {
   final List<String> popularSearches;
   final List<String> recommendedSearches;
   final void Function(String value)? onSelected;
 
-  const SearchBarWithFilters({
+  const SearchWholesaleWidget({
     Key? key,
     required this.popularSearches,
     required this.recommendedSearches,
@@ -14,10 +14,10 @@ class SearchBarWithFilters extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<SearchBarWithFilters> createState() => _SearchBarWithFiltersState();
+  State<SearchWholesaleWidget> createState() => _SearchWholesaleWidgetState();
 }
 
-class _SearchBarWithFiltersState extends State<SearchBarWithFilters> {
+class _SearchWholesaleWidgetState extends State<SearchWholesaleWidget> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocusNode = FocusNode();
   bool _showSearchSuggestions = false;

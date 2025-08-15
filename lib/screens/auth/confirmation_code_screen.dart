@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/home_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class ConfirmationCodeScreen extends StatefulWidget {
   const ConfirmationCodeScreen({super.key});
@@ -106,11 +107,9 @@ class _ConfirmationCodeScreenState extends State<ConfirmationCodeScreen> {
                       child: CustomButtonAuth(
                         text: 'Продолжить',
                         onPressed: () {
-                           Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomeScreen()),
-                            (route) => false,
-                          );
+                       
+                        customNavigatePushAndRemoveWithFade(context, HomeScreen());
+                        
                         },
                         backgroundColor: const Color(0xFF035D41),
                         textColor: Colors.white,

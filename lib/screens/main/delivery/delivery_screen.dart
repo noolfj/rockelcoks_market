@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/main/delivery/delivery_address_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class DeliveryScreen extends StatelessWidget {
   @override
@@ -123,10 +124,7 @@ class DeliveryScreen extends StatelessWidget {
             height: 48,
             child: ElevatedButton(
               onPressed: () {
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => DeliveryAddressScreen()),
-                 );
+                customNavigatePushWithFade(context, DeliveryAddressScreen());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xff355D3A),

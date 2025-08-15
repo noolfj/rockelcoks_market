@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/main/delivery/delivery_screen_test.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class PickedAddressSuccessScreen extends StatelessWidget {
   @override
@@ -50,10 +51,7 @@ class PickedAddressSuccessScreen extends StatelessWidget {
             height: 48,
             child: ElevatedButton(
               onPressed: () {
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => DeliveryTestScreen()),
-                 );
+                customNavigatePushWithFade(context, DeliveryTestScreen());
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xff355D3A),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/main/delivery/map_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class DeliveryAddressScreen extends StatelessWidget {
   @override
@@ -118,10 +119,7 @@ class DeliveryAddressScreen extends StatelessWidget {
                     height: 48,
                     child: OutlinedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MapScreen()),
-                        );
+                        customNavigatePushWithFade(context, MapScreen());
                       },
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Color(0xff355D3A), width: 2 ),
@@ -150,10 +148,7 @@ class DeliveryAddressScreen extends StatelessWidget {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MapScreen()),
-                  );
+                  customNavigatePushWithFade(context, MapScreen());
                 },
                 child: Container(
                   height: 212,

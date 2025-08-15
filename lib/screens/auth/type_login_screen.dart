@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/auth/login_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class TypeLoginScreen extends StatelessWidget {
   const TypeLoginScreen({super.key});
@@ -71,10 +72,7 @@ class TypeLoginScreen extends StatelessWidget {
 
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginScreen()),
-                        );
+                      customNavigatePushWithFade(context, LoginScreen());
                       },
                       child: Text(
                         'Вход в сущeствующий \nАккаунт',

@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:rockelcoks_market/screens/main/delivery/picked_address_success_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
 import 'package:rockelcoks_market/utils/custom_Snackbar.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -127,10 +128,7 @@ Widget build(BuildContext context) {
                   Colors.grey,
                 );
               } else {
-                Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => PickedAddressSuccessScreen()),
-                 );
+              customNavigatePushWithFade(context, PickedAddressSuccessScreen());
               }
             },
             child: Text(

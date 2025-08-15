@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/custom_widgets/seeAlso_card.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class WholesaleProductDetailScreen extends StatelessWidget {
   final List<String> imagePaths;
@@ -707,143 +708,150 @@ Widget _containerSeeAlso(BuildContext context) {
           ),
         ),
         const SizedBox(height: 20),
-Wrap(
-  spacing: 6,
-  runSpacing: 6,
-  children: [
-    SizedBox(
-      width: (MediaQuery.of(context).size.width - 50) / 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WholesaleProductDetailScreen(
-                imagePaths: ['assets/images/products/pl1.png', 'assets/images/products/pl1.png', 'assets/images/products/pl1.png'],
-                title: 'Электрическая варочная панель KRONA EDIEL 38 BL TK',
-                price: '656',
-                oldPrice: '1222',
-                rating: '5.0',
-                comment: '30',
-                minOrder: '1',
+        Wrap(
+          spacing: 6,
+          runSpacing: 6,
+          children: [
+            SizedBox(
+              width: (MediaQuery.of(context).size.width - 50) / 2,
+              child: GestureDetector(
+                onTap: () {
+                  customNavigatePushWithFade(
+                    context,
+                    WholesaleProductDetailScreen(
+                      imagePaths: [
+                        'assets/images/products/pl1.png',
+                        'assets/images/products/pl1.png',
+                        'assets/images/products/pl1.png'
+                      ],
+                      title:
+                          'Электрическая варочная панель KRONA EDIEL 38 BL TK',
+                      price: '656',
+                      oldPrice: '1222',
+                      rating: '5.0',
+                      comment: '30',
+                      minOrder: '1',
+                    ),
+                  );
+                },
+                child: const SeeAlsoCard(
+                  imagePath: 'assets/images/products/pl1.png',
+                  title:
+                      'Электрическая варочная панель KRONA EDIEL 38 BL TK',
+                  price: '656',
+                  oldPrice: '1222',
+                  minOrder: '1',
+                  factoryName: 'KRONA',
+                  rating: '5.0',
+                  grade: '30',
+                ),
               ),
             ),
-          );
-        },
-        child: const SeeAlsoCard(
-          imagePath: 'assets/images/products/pl1.png',
-          title: 'Электрическая варочная панель KRONA EDIEL 38 BL TK',
-          price: '656',
-          oldPrice: '1222',
-          minOrder: '1',
-          factoryName: 'KRONA',
-          rating: '5.0', 
-          grade: '30',
-        ),
-      ),
-    ),
-    SizedBox(
-      width: (MediaQuery.of(context).size.width - 50) / 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WholesaleProductDetailScreen(
-                imagePaths: ['assets/images/products/pl3.png', 'assets/images/products/pl3.png', 'assets/images/products/pl3.png'],
-                title: 'Индукционная варочная панель Comfee',
-                price: '533',
-                oldPrice: '1212',
-                rating: '4.8',
-                comment: '596',
-                minOrder: '1',
+            SizedBox(
+              width: (MediaQuery.of(context).size.width - 50) / 2,
+              child: GestureDetector(
+                onTap: () {
+                  customNavigatePushWithFade(
+                    context,
+                    WholesaleProductDetailScreen(
+                      imagePaths: [
+                        'assets/images/products/pl3.png',
+                        'assets/images/products/pl3.png',
+                        'assets/images/products/pl3.png'
+                      ],
+                      title: 'Индукционная варочная панель Comfee',
+                      price: '533',
+                      oldPrice: '1212',
+                      rating: '4.8',
+                      comment: '596',
+                      minOrder: '1',
+                    ),
+                  );
+                },
+                child: const SeeAlsoCard(
+                  imagePath: 'assets/images/products/pl3.png',
+                  title: 'Индукционная варочная панель Comfee',
+                  price: '533',
+                  oldPrice: '1212',
+                  minOrder: '1',
+                  factoryName: 'Comfee',
+                  rating: '4.8',
+                  grade: '596',
+                ),
               ),
             ),
-          );
-        },
-        child: const SeeAlsoCard(
-          imagePath: 'assets/images/products/pl3.png',
-          title: 'Индукционная варочная панель Comfee',
-          price: '533',
-          oldPrice: '1212',
-          minOrder: '1',
-          factoryName: 'Comfee',
-          rating: '4.8',
-          grade: '596',
-
-        ),
-      ),
-    ),
-    SizedBox(
-      width: (MediaQuery.of(context).size.width - 50) / 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WholesaleProductDetailScreen(
-                imagePaths: ['assets/images/products/pl2.png', 'assets/images/products/pl2.png', 'assets/images/products/pl2.png'],
-                title: 'Электрическая варочная панель DEXP 4M2CTYL/B',
-                price: '480',
-                oldPrice: '1300',
-                rating: '4.9',
-                comment: '109',
-                minOrder: '1',
+            SizedBox(
+              width: (MediaQuery.of(context).size.width - 50) / 2,
+              child: GestureDetector(
+                onTap: () {
+                  customNavigatePushWithFade(
+                    context,
+                    WholesaleProductDetailScreen(
+                      imagePaths: [
+                        'assets/images/products/pl2.png',
+                        'assets/images/products/pl2.png',
+                        'assets/images/products/pl2.png'
+                      ],
+                      title:
+                          'Электрическая варочная панель DEXP 4M2CTYL/B',
+                      price: '480',
+                      oldPrice: '1300',
+                      rating: '4.9',
+                      comment: '109',
+                      minOrder: '1',
+                    ),
+                  );
+                },
+                child: const SeeAlsoCard(
+                  imagePath: 'assets/images/products/pl2.png',
+                  title: 'Варочная панель DEXP 4M2CTYL/B',
+                  price: '480',
+                  oldPrice: '1300',
+                  minOrder: '1',
+                  factoryName: 'DEXP',
+                  rating: '4.9',
+                  grade: '109',
+                ),
               ),
             ),
-          );
-        },
-        child: const SeeAlsoCard(
-          imagePath: 'assets/images/products/pl2.png',
-          title: 'Варочная панель DEXP 4M2CTYL/B',
-          price: '480',
-          oldPrice: '1300',
-          minOrder: '1',
-          factoryName: 'DEXP',
-          rating: '4.9',
-          grade: '109',
-
-        ),
-      ),
-    ),
-    SizedBox(
-      width: (MediaQuery.of(context).size.width - 50) / 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WholesaleProductDetailScreen(
-                imagePaths: ['assets/images/products/pl3.png', 'assets/images/products/pl3.png', 'assets/images/products/pl3.png'],
-                title: 'Индукционная варочная панель Comfee',
-                price: '540',
-                oldPrice: '1200',
-                rating: '4.8',
-                comment: '596',
-                minOrder: '1',
+            SizedBox(
+              width: (MediaQuery.of(context).size.width - 50) / 2,
+              child: GestureDetector(
+                onTap: () {
+                  customNavigatePushWithFade(
+                    context,
+                    WholesaleProductDetailScreen(
+                      imagePaths: [
+                        'assets/images/products/pl3.png',
+                        'assets/images/products/pl3.png',
+                        'assets/images/products/pl3.png'
+                      ],
+                      title: 'Индукционная варочная панель Comfee',
+                      price: '540',
+                      oldPrice: '1200',
+                      rating: '4.8',
+                      comment: '596',
+                      minOrder: '1',
+                    ),
+                  );
+                },
+                child: const SeeAlsoCard(
+                  imagePath: 'assets/images/products/pl3.png',
+                  title: 'Индукционная варочная панель Comfee',
+                  price: '540',
+                  oldPrice: '1200',
+                  minOrder: '1',
+                  factoryName: 'Comfee',
+                  rating: '4.8',
+                  grade: '596',
+                ),
               ),
             ),
-          );
-        },
-        child: const SeeAlsoCard(
-          imagePath: 'assets/images/products/pl3.png',
-          title: 'Индукционная варочная панель Comfee',
-          price: '540',
-          oldPrice: '1200',
-          minOrder: '1',
-          factoryName: 'Comfee',
-          rating: '4.8',
-          grade: '596',
-
+          ],
         ),
-      ),
-    ),
-  ],
-),
       ],
     ),
   );
 }
-
 
 }

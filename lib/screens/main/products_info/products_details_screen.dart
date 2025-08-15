@@ -11,6 +11,7 @@ import 'package:rockelcoks_market/screens/category/category_screen.dart';
 import 'package:rockelcoks_market/screens/chat/chat_screen.dart';
 import 'package:rockelcoks_market/screens/profile/profile_screen.dart';
 import 'package:rockelcoks_market/screens/shop/shop_screen.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final List<String> imagePaths;
@@ -642,7 +643,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                padding: const EdgeInsets.only(bottom: 4),
                child: GestureDetector(
                   onTap: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => ProductInfoScreen()));
+                    customNavigatePushWithFade( context, ProductInfoScreen());
                   },
                  child: Row(
                    mainAxisSize: MainAxisSize.min,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/custom_widgets/products_card.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class ProductCardItem extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -24,19 +25,14 @@ class ProductCardItem extends StatelessWidget {
         rating: product['rating'] as String,
         comment: product['comment'] as String,
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => ProductDetailScreen(
-                imagePaths: List<String>.from(product['imagePaths'] as List),
-                title: product['title'] as String,
-                price: product['price'] as String,
-                oldPrice: product['oldPrice'] as String,
-                rating: product['rating'] as String,
-                comment: product['comment'] as String,
-              ),
-            ),
-          );
+          customNavigatePushWithFade(context, ProductDetailScreen(
+            imagePaths: List<String>.from(product['imagePaths'] as List),
+            title: product['title'] as String,
+            price: product['price'] as String,
+            oldPrice: product['oldPrice'] as String,
+            rating: product['rating'] as String,
+            comment: product['comment'] as String,
+          ),);
         },
       ),
     );

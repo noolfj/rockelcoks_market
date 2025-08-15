@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rockelcoks_market/screens/auth/type_login_screen.dart';
 import 'package:rockelcoks_market/utils/app_button_auth.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -85,10 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               CustomButtonAuth(
                                 text: 'Войти в существующий',
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => TypeLoginScreen()),
-                                  );
+                                customNavigatePushWithFade(context, TypeLoginScreen());
                                 },
                                 backgroundColor: Color(0xFF9DA174),
                                 textColor: Colors.white,

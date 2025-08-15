@@ -3,6 +3,7 @@ import 'package:rockelcoks_market/custom_widgets/wholesale_card.dart';
 import 'package:rockelcoks_market/screens/main/wholesale_product/search_wholesale.dart';
 import 'package:rockelcoks_market/screens/main/wholesale_product/wholesale_products_details_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class WholesaleProductsScreen extends StatelessWidget {
   WholesaleProductsScreen({super.key});
@@ -36,7 +37,7 @@ class WholesaleProductsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBarWithFilters(
+            SearchWholesaleWidget(
               popularSearches: [],
               recommendedSearches: [],
             ),
@@ -63,18 +64,20 @@ class WholesaleProductsScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/air_pods.png','assets/images/products/air_pods.png','assets/images/products/air_pods.png'],
-                          title: 'Наушники AirPods 2 Pro',
-                          price: '220',
-                          oldPrice: '300', 
-                          rating: '4.5', 
-                          comment: '120', 
-                          minOrder: '10', 
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: [
+                          'assets/images/products/air_pods.png',
+                          'assets/images/products/air_pods.png',
+                          'assets/images/products/air_pods.png'
+                        ],
+                        title: 'Наушники AirPods 2 Pro',
+                        price: '220',
+                        oldPrice: '300', 
+                        rating: '4.5', 
+                        comment: '120', 
+                        minOrder: '10', 
                       ),
                     );
                   },
@@ -87,18 +90,20 @@ class WholesaleProductsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/kros_nike.png','assets/images/products/kros_nike.png','assets/images/products/kros_nike.png' ],
-                          title: 'Кроссовки Nike',
-                          price: '350',
-                          oldPrice: '450',
-                          rating: '4.8',
-                          comment: '200',
-                          minOrder: '10',
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: [
+                          'assets/images/products/kros_nike.png',
+                          'assets/images/products/kros_nike.png',
+                          'assets/images/products/kros_nike.png'
+                        ],
+                        title: 'Кроссовки Nike',
+                        price: '350',
+                        oldPrice: '450',
+                        rating: '4.8',
+                        comment: '200',
+                        minOrder: '10',
                       ),
                     );
                   },
@@ -111,18 +116,20 @@ class WholesaleProductsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/sviter.png', 'assets/images/products/sviter.png', 'assets/images/products/sviter.png'],
-                          title: 'Свитер Nike',
-                          price: '220',
-                          oldPrice: '280',
-                          rating: '4.2',
-                          comment: '80',
-                          minOrder: '10',
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: [
+                          'assets/images/products/sviter.png',
+                          'assets/images/products/sviter.png',
+                          'assets/images/products/sviter.png'
+                        ],
+                        title: 'Свитер Nike',
+                        price: '220',
+                        oldPrice: '280',
+                        rating: '4.2',
+                        comment: '80',
+                        minOrder: '10',
                       ),
                     );
                   },
@@ -135,18 +142,20 @@ class WholesaleProductsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/air_pods.png', 'assets/images/products/air_pods.png', 'assets/images/products/air_pods.png'],
-                          title: 'Наушники AirPods 2 Pro',
-                          price: '220',
-                          oldPrice: '300',
-                          rating: '4.5',
-                          comment: '120',
-                          minOrder: '10',
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: [
+                          'assets/images/products/air_pods.png',
+                          'assets/images/products/air_pods.png',
+                          'assets/images/products/air_pods.png'
+                        ],
+                        title: 'Наушники AirPods 2 Pro',
+                        price: '220',
+                        oldPrice: '300',
+                        rating: '4.5',
+                        comment: '120',
+                        minOrder: '10',
                       ),
                     );
                   },
@@ -182,18 +191,16 @@ class WholesaleProductsScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/kros_nike.png'],
-                          title: 'Кроссовки',
-                          price: '320',
-                          oldPrice: '400',
-                          rating: '4.7',
-                          comment: '150',
-                          minOrder: '10',
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: ['assets/images/products/kros_nike.png'],
+                        title: 'Кроссовки',
+                        price: '320',
+                        oldPrice: '400',
+                        rating: '4.7',
+                        comment: '150',
+                        minOrder: '10',
                       ),
                     );
                   },
@@ -206,18 +213,16 @@ class WholesaleProductsScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    customNavigatePushWithFade(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => WholesaleProductDetailScreen(
-                          imagePaths: ['assets/images/products/sviter.png'],
-                          title: 'Толстовка Champion',
-                          price: '280',
-                          oldPrice: '350',
-                          rating: '4.3',
-                          comment: '90',
-                          minOrder: '10',
-                        ),
+                      WholesaleProductDetailScreen(
+                        imagePaths: ['assets/images/products/sviter.png'],
+                        title: 'Толстовка Champion',
+                        price: '280',
+                        oldPrice: '350',
+                        rating: '4.3',
+                        comment: '90',
+                        minOrder: '10',
                       ),
                     );
                   },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:rockelcoks_market/custom_widgets/products_card.dart';
 import 'package:rockelcoks_market/model/products_data.dart';
+import 'package:rockelcoks_market/screens/main/business_product/business_product_screen.dart';
 import 'package:rockelcoks_market/screens/main/delivery/delivery_screen.dart';
 import 'package:rockelcoks_market/screens/main/points_screen.dart';
 import 'package:rockelcoks_market/screens/main/products_info/products_details_screen.dart';
@@ -9,6 +10,7 @@ import 'package:rockelcoks_market/screens/main/referral_screen.dart';
 import 'package:rockelcoks_market/screens/main/search_textfield.dart';
 import 'package:rockelcoks_market/screens/main/wholesale_product/wholesale_product_screen.dart';
 import 'package:rockelcoks_market/utils/app_styles.dart';
+import 'package:rockelcoks_market/utils/custom_navigate_push.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -107,10 +109,8 @@ class _MainScreenState extends State<MainScreen> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => DeliveryScreen()),
-                                );
+                                customNavigatePushWithFade(context, DeliveryScreen());
+
                                 },
                                 child: Row(
                                   children: [
@@ -206,40 +206,28 @@ class _MainScreenState extends State<MainScreen> {
                        'assets/icons/ic_link.png',
                        'Ссылка',
                        () {
-                         Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => ReferralScreen()),
-                         );
+                        customNavigatePushWithFade(context, ReferralScreen());
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_points.png',
                        'Баллы',
                        () {
-                        Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => PointsScreen()),
-                         );
+                        customNavigatePushWithFade(context, PointsScreen());
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_shop.png',
                        'Оптовый\nзакуп',
                        () {
-                          Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => WholesaleProductsScreen()),
-                         );
+                         customNavigatePushWithFade(context, WholesaleProductsScreen());
                        },
                      ),
                      _categoryItem(
                        'assets/icons/ic_biz.png',
                        'Бизнес',
                        () {
-                        // Navigator.push(
-                        //    context,
-                        //    MaterialPageRoute(builder: (context) => ReferralScreen()),
-                        //  );
+                       customNavigatePushWithFade(context, BusinessProductsScreen());
                        },
                      ),
 
@@ -267,19 +255,14 @@ class _MainScreenState extends State<MainScreen> {
                         rating: product['rating'] as String,
                         comment: product['comment'] as String,
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => ProductDetailScreen(
-                                imagePaths: List<String>.from(product['imagePaths'] as List),
-                                title: product['title'] as String,
-                                price: product['price'] as String,
-                                oldPrice: product['oldPrice'] as String,
-                                rating: product['rating'] as String,
-                                comment: product['comment'] as String, 
-                              ),
-                            ),
-                          );
+                         customNavigatePushWithFade(context, ProductDetailScreen(
+                            imagePaths: List<String>.from(product['imagePaths'] as List),
+                            title: product['title'] as String,
+                            price: product['price'] as String,
+                            oldPrice: product['oldPrice'] as String,
+                            rating: product['rating'] as String,
+                            comment: product['comment'] as String, 
+                          ),);
                         },
                       ),
                     );
